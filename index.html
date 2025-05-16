@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Feliz Aniversario</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Georgia", serif;
+        background: linear-gradient(to top right, #fff0f5, #ffe6f0);
+        color: #333;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .heart-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+      }
+
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(45deg);
+        animation: float linear infinite;
+        opacity: 0.6;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: -10px;
+        top: 0;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(100vh) rotate(45deg);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(-10vh) rotate(45deg);
+          opacity: 0.8;
+        }
+      }
+
+      .carta {
+        max-width: 700px;
+        margin: 80px auto;
+        background: #ffffffdd;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 2s ease-in;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        text-align: center;
+        color: #d81b60;
+        font-size: 2.2rem;
+        animation: heartbeat 1.5s infinite;
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        text-align: justify;
+        animation: slideUp 1s ease forwards;
+        opacity: 0;
+      }
+
+      p:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+      p:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+      p:nth-child(4) {
+        animation-delay: 0.9s;
+      }
+      p:nth-child(5) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .firma {
+        text-align: right;
+        font-style: italic;
+        color: #c2185b;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Corazones flotantes -->
+    <div class="heart-bg" id="heart-container"></div>
+
+    <!-- Carta visible -->
+    <div class="carta">
+      <h1>Feliz Aniversario, Dodo hermoso 💖</h1>
+      <p>
+        Hoy celebramos nuestra historia, ese hermoso lazo que hemos construido
+        día a día con amor, paciencia y comprensión. Cada momento a tu lado ha
+        sido único, y no dejo de agradecer por tenerte en mi vida.
+      </p>
+      <p>
+        No importa cuánto tiempo llevemos juntos, lo que realmente importa es la
+        intensidad con la que nos amamos, el apoyo incondicional que nos damos y
+        los recuerdos que seguimos creando.
+      </p>
+      <p>
+        Gracias por ser tú, por acompañarme, por entenderme y por hacer de este
+        camino algo tan especial. Te amo profundamente, y deseo seguir
+        compartiendo contigo todo lo que la vida nos depare.
+      </p>
+      <p class="firma">
+        Con todo mi cariño,<br />
+        Tu princesa Angie ❤️
+      </p>
+    </div>
+
+    <script>
+      // Generar corazones animados
+      const heartContainer = document.getElementById("heart-container");
+
+      for (let i = 0; i < 40; i++) {
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        let size = Math.random() * 15 + 10;
+        heart.style.width = size + "px";
+        heart.style.height = size + "px";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.style.animationDuration = Math.random() * 5 + 5 + "s";
+        heart.style.opacity = Math.random();
+        heartContainer.appendChild(heart);
+      }
+    </script>
+  </body>
+</html>
